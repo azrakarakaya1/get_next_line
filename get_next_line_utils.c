@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azkaraka <azkaraka@student.42istanbul.com  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/16 11:51:57 by azkaraka          #+#    #+#             */
+/*   Updated: 2025/08/16 13:10:45 by azkaraka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
@@ -10,48 +22,22 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, '\0', n);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t	i;
-
-	if (dest == NULL && src == NULL)
-		return (0);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dest);
-}
-
-void	*ft_memset(void *str, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)str)[i] = c;
-		i++;
-	}
-	return (str);
-}
-
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ret;
+	size_t	total;
+	size_t	i;
 
-	ret = malloc(count * size);
-	if (ret == NULL)
+	total = count * size;
+	ret = malloc(total);
+	if (!ret)
 		return (NULL);
-	if (ret)
-		ft_bzero(ret, count * size);
+	i = 0;
+	while (i < total)
+	{
+		((unsigned char *)ret)[i] = 0;
+		i++;
+	}
 	return (ret);
 }
 
@@ -72,12 +58,19 @@ char	*ft_strdup(const char *str)
 {
 	char	*s;
 	size_t	len;
+	size_t	i;
 
 	len = ft_strlen(str);
 	s = (char *)malloc(len + 1);
-	if ((s) == NULL)
+	if (!s)
 		return (NULL);
-	ft_memcpy(s, str, len + 1);
+	i = 0;
+	while (i < len)
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
 	return (s);
 }
 
@@ -89,10 +82,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-    if (!s1)
-        return (ft_strdup(s2));
-    if (!s2)
-        return (ft_strdup(s1));
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (NULL);

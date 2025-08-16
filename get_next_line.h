@@ -1,5 +1,17 @@
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azkaraka <azkaraka@student.42istanbul.com  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/16 11:52:13 by azkaraka          #+#    #+#             */
+/*   Updated: 2025/08/16 13:01:27 by azkaraka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -10,14 +22,12 @@
 
 size_t	ft_strlen(const char *s);
 
-void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_memset(void *str, int c, size_t len);
 
 char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-char    *get_next_line(int fd);
+
+char	*get_next_line(int fd);
 
 #endif

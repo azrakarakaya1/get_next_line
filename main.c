@@ -25,6 +25,24 @@ void run_test(const char *filename)
 
 int main()
 {
+    /*
+    int fd = open("test.txt", O_RDONLY);
+    char *line;
+
+    if (fd < 0)
+        return 1;
+        
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
+    close(fd);
+    */
+
+    
+
+    /*
     // Test 1: Normal dosya
     run_test("file1.txt");
 
@@ -65,6 +83,7 @@ int main()
         free(invalid);
     }
     printf("=== End Invalid FD Test ===\n");
+    */
 
     return 0;
 }
